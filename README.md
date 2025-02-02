@@ -4,6 +4,9 @@
   Simple, beautiful, and user-friendly HTML template for <a href="https://github.com/Gozargah/Marzban">Marzban</a> subscription page based on <a href="https://getbootstrap.com/docs/5.3/">Bootstrap 5 CSS framework</a>
   <br>
   <br>
+  <a href="https://metgen.github.io/marz-sub-page/"><strong>Live demo »</strong></a>
+  <br>
+  <br>
   <a href="https://github.com/metgen/marz-sub-page/tree/main#features">Features</a>
   ·
   <a href="https://github.com/metgen/marz-sub-page/tree/main#installation">Installation</a>
