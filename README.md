@@ -123,7 +123,7 @@ After making changes, save the file and restart Marzban / Marzneshin.
 <h3 align="center">Contributors:</h3>
 <p align="center">
 <a href="https://github.com/metgen/marz-sub-page/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=streletskiy/marzban-sub-page" />
+  <img src="https://contrib.rocks/image?repo=metgen/marz-sub-page" />
 </a>
 </p>
 <br>
