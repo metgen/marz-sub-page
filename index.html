@@ -16,27 +16,26 @@
 			const linkFull = "{{ user.subscription_url }}";
 			var qrLink = linkFull;
 			const link64 = Base64.encode(linkFull);
-			
-			// Change "sub" to other string to customize subscription group name when import in app (works in some apps)
-			const serviceName = "sub";
+			const subname = "{{ user.username }}";
 			
 			function setHrefs() {
 				// Apps deeplinks
-				document.getElementById("href-ios-hiddify").href = `hiddify://import/${linkFull}`;
+				document.getElementById("href-ios-hiddify").href = `hiddify://import/${linkFull}#${subname}_Sub`;
 				document.getElementById("href-ios-streisand").href = `streisand://import/${linkFull}`;
-				document.getElementById("href-ios-foxray").href = `foxray://yiguo.dev/sub/add/?url=${link64}#` + serviceName;
-				document.getElementById("href-ios-v2box").href = `v2box://install-sub?url=${linkFull}&name=` + serviceName;
+				document.getElementById("href-ios-foxray").href = `foxray://yiguo.dev/sub/add/?url=${link64}#${subname}_Sub`;
+				document.getElementById("href-ios-v2box").href = `v2box://install-sub?url=${linkFull}&name=${subname}_Sub`;
 				document.getElementById("href-ios-shadowrocket").href = `sub://${link64}`;
-				document.getElementById("href-ios-singbox").href = `sing-box://import-remote-profile?url=${linkFull}#` + serviceName;
+				document.getElementById("href-ios-singbox").href = `sing-box://import-remote-profile?url=${linkFull}#${subname}_Sub`;
 				document.getElementById("href-ios-happ").href = `happ://add/${linkFull}`;
 				document.getElementById("href-android-hiddify").href = `hiddify://import/${linkFull}`;
-				document.getElementById("href-android-v2rayng").href = `v2rayng://install-config?url=${linkFull}&name=` + serviceName;
-				document.getElementById("href-android-cmfa").href = `clash://install-config?url${linkFull}&name=` + serviceName;
-				document.getElementById("href-android-singbox").href = `sing-box://import-remote-profile?url=${linkFull}#` + serviceName;
+				document.getElementById("href-android-v2rayng").href = `v2rayng://install-config?url=${linkFull}#${subname}_Sub`;
+				document.getElementById("href-android-v2raytun").href = `v2raytun://import/${linkFull}#${subname}_Sub`;
+				document.getElementById("href-android-cmfa").href = `clash://install-config?url${linkFull}&name=${subname}_Sub`;
+				document.getElementById("href-android-singbox").href = `sing-box://import-remote-profile?url=${linkFull}#${subname}_Sub`;
 				document.getElementById("href-android-happ").href = `happ://add/${linkFull}`;
 				document.getElementById("href-windows-hiddify").href = `hiddify://import/${linkFull}`;
 				document.getElementById("href-windows-invisibleman").href = `invxray://subscription/${linkFull}`;
-				document.getElementById("href-windows-clashvergerev").href = `clash://install-config?url${linkFull}&name=` + serviceName;
+				document.getElementById("href-windows-clashvergerev").href = `clash://install-config?url=${linkFull}/clash-meta&name=${subname}_Sub`;
 				
 				// Happ routing deeplinks
 				document.getElementById("href-ios-happ-RoscomVPN").href = `https://routing.vpn.ru.com/`;
