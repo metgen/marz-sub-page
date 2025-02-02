@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="theme-color" content="#1A202C">
-		<title>{{ user.username }} - Sub Info</title>
+		<title>DEMO - Sub Info</title>
 		<link href="https://raw.githubusercontent.com/metgen/marz-sub-page/refs/heads/main/img/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
 		<link href="https://raw.githubusercontent.com/metgen/marz-sub-page/refs/heads/main/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
 		<link href="https://raw.githubusercontent.com/metgen/marz-sub-page/refs/heads/main/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
@@ -13,10 +13,10 @@
 		<link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" rel="stylesheet">
 		<script>
 			var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/[^A-Za-z0-9\+\/\=]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/\r\n/g,"\n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}}
-			const linkFull = "{{ user.subscription_url }}";
+			const linkFull = "https://github.com/metgen/marz-sub-page";
 			var qrLink = linkFull;
 			const link64 = Base64.encode(linkFull);
-			const subname = "{{ user.username }}";
+			const subname = "DEMO";
 			
 			function setHrefs() {
 				// Apps deeplinks
@@ -348,7 +348,7 @@
 			
 			<!-- Subscription username and buttons -->
 			<div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
-				<span class="text-break fs-3 fw-bold"><span x-text="$t('subscriptionFor')"></span> {{ user.username }}</span>
+				<span class="text-break fs-3 fw-bold"><span x-text="$t('subscriptionFor')"></span> DEMO</span>
 				<div>
 					<button class="btn my-btn btn-copy-sub-link" type="button" x-text="$t('copyLink')"></button>
 					<button class="btn my-btn btn-show-qr-sub" id="btn-show-qr-sub" data-bs-toggle="modal" data-bs-target="#qrModal" data-ignore="true">
@@ -361,37 +361,15 @@
 			<div class="row row-cols-2 row-cols-sm-4 g-3 mb-4">
 				<div class="col">
 					<div class="my-block d-flex flex-column h-100">
-						{% if user.status.value == 'active' %}
 						<i class="bi my-color-green fs-4 mb-3 bi-emoji-smile-fill"></i>
-						{% else %}
-						<i class="bi my-color-red fs-4 mb-3 bi-emoji-frown-fill"></i>
-						{% endif %}
-						<span class="fs-5 fw-bold" x-text="$t('status')"></span>
-						{% if user.status.value == 'active' %}
 						<span class="fw-semibold" x-text="$t('active')"></span>
-						{% elif user.status.value == 'limited' %}
-						<span class="fw-semibold" x-text="$t('limited')"></span>
-						{% elif user.status.value == 'expired' %}
-						<span class="fw-semibold" x-text="$t('expired')"></span>
-						{% elif user.status.value == 'disabled' %}
-						<span class="fw-semibold" x-text="$t('disabled')"></span>
-						{% endif %}
 					</div>
 				</div>
 				<div class="col">
 					<div class="my-block d-flex flex-column h-100">
 						<i class="bi my-color-red fs-4 mb-3 bi-calendar3"></i>
 						<span class="fs-5 fw-bold" x-text="$t('duration')"></span>
-						{% if not user.expire %}
 						<span class="fw-semibold" x-text="$t('forever')"></span>
-						{% else %}
-						<!-- Can it be done better? -->
-						{% set date = (user.expire | datetime).split()[0].split('-')[::-1] %}
-						<span class="fw-semibold">
-							<span x-text="$t('until')"></span>
-							{{ '.'.join(date) }}
-						</span>
-						{% endif %}
 					</div>
 				</div>
 				<div class="col">
@@ -399,11 +377,9 @@
 						<i class="bi my-color-blue fs-4 mb-3 bi-arrow-down-up"></i>
 						<span class="fs-5 fw-bold" x-text="$t('traffic')"></span>
 						<span class="fw-semibold">
-							{{ user.used_traffic | bytesformat }}
+							22.77 GB
 							<span x-text="$t('of')"></span>
-							{% if not user.data_limit %}∞{% else %}
-							{{ user.data_limit | bytesformat }}
-							{% endif %}
+							∞
 						</span>
 					</div>
 				</div>
@@ -411,17 +387,7 @@
 					<div class="my-block d-flex flex-column h-100">
 						<i class="bi my-color-yellow fs-4 mb-3 bi-repeat"></i>
 						<span class="fs-5 fw-bold" x-text="$t('trafficReset')"></span>
-						{% if user.data_limit_reset_strategy == 'no_reset' %}
-						<span class="fw-semibold" x-text="$t('no')"></span>
-						{% elif user.data_limit_reset_strategy == 'day' %}
-						<span class="fw-semibold" x-text="$t('daily')"></span>
-						{% elif user.data_limit_reset_strategy == 'week' %}
 						<span class="fw-semibold" x-text="$t('weekly')"></span>
-						{% elif user.data_limit_reset_strategy == 'month' %}
-						<span class="fw-semibold" x-text="$t('monthly')"></span>
-						{% elif user.data_limit_reset_strategy == 'year' %}
-						<span class="fw-semibold" x-text="$t('yearly')"></span>
-						{% endif %}
 					</div>
 				</div>
 			</div>
@@ -1177,7 +1143,6 @@
 				</div>
 				
 				<!-- Separate servers links start -->
-				{% if user.status == 'active' %}
 				<div class="accordion-item rounded-4 px-3 mb-2">
 					<h2 class="accordion-header">
 						<button class="accordion-button collapsed fs-5 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLinks" aria-expanded="false" aria-controls="collapseLinks">
@@ -1189,21 +1154,41 @@
 						<div class="pb-2">
 							<p x-text="$t('separateLinks1')"></p>
 							<p x-text="$t('separateLinks2')"></p>
-							{% for link in user.links %}
+							
+							<!-- Separate node start -->
 							<div class="input-group input-group-lg border border-0 text-bg-dark rounded-4 mb-3">	
-								<input class="form-control my-link-separate border border-0 ps-4" type="text" value="{{ link }}" disabled readonly>
-								<button class="btn my-btn btn-copy-link fs-5 mt-2 mb-2 rounded-3 pb-2 pt-1" data-link="{{ link }}">
+								<input class="form-control my-link-separate border border-0 ps-4" type="text" value="#%F0%9F%87%AB%F0%9F%87%AE%20FI%20%5BVLESS%5D" disabled readonly>
+								<button class="btn my-btn btn-copy-link fs-5 mt-2 mb-2 rounded-3 pb-2 pt-1" data-link="https://github.com/metgen/marz-sub-page">
 									<i class="bi bi-clipboard2-fill"></i>
 								</button>
-								<button class="btn my-btn btn-show-qr m-2 rounded-3" id="btn-show-qr" data-bs-toggle="modal" data-bs-target="#qrModal" data-ignore="true" data-link="{{ link }}">
+								<button class="btn my-btn btn-show-qr m-2 rounded-3" id="btn-show-qr" data-bs-toggle="modal" data-bs-target="#qrModal" data-ignore="true" data-link="https://github.com/metgen/marz-sub-page#%F0%9F%87%AB%F0%9F%87%AE%20FI%20%5BVLESS%5D">
 									<svg class="bi"><use href="#qr"></use></svg>
 								</button>
 							</div>
-							{% endfor %}
+							<!-- Separate node end -->
+							<div class="input-group input-group-lg border border-0 text-bg-dark rounded-4 mb-3">	
+								<input class="form-control my-link-separate border border-0 ps-4" type="text" value="#%F0%9F%87%B1%F0%9F%87%B9%20LT%20%5BVLESS%5D" disabled readonly>
+								<button class="btn my-btn btn-copy-link fs-5 mt-2 mb-2 rounded-3 pb-2 pt-1" data-link="https://github.com/metgen/marz-sub-page">
+									<i class="bi bi-clipboard2-fill"></i>
+								</button>
+								<button class="btn my-btn btn-show-qr m-2 rounded-3" id="btn-show-qr" data-bs-toggle="modal" data-bs-target="#qrModal" data-ignore="true" data-link="https://github.com/metgen/marz-sub-page#%F0%9F%87%B1%F0%9F%87%B9%20LT%20%5BVLESS%5D">
+									<svg class="bi"><use href="#qr"></use></svg>
+								</button>
+							</div>
+							<!-- Separate node end -->
+							<div class="input-group input-group-lg border border-0 text-bg-dark rounded-4 mb-3">	
+								<input class="form-control my-link-separate border border-0 ps-4" type="text" value="#%F0%9F%87%B8%F0%9F%87%AA%20SE%20%5BVLESS%5D" disabled readonly>
+								<button class="btn my-btn btn-copy-link fs-5 mt-2 mb-2 rounded-3 pb-2 pt-1" data-link="https://github.com/metgen/marz-sub-page">
+									<i class="bi bi-clipboard2-fill"></i>
+								</button>
+								<button class="btn my-btn btn-show-qr m-2 rounded-3" id="btn-show-qr" data-bs-toggle="modal" data-bs-target="#qrModal" data-ignore="true" data-link="https://github.com/metgen/marz-sub-page#%F0%9F%87%B8%F0%9F%87%AA%20SE%20%5BVLESS%5D">
+									<svg class="bi"><use href="#qr"></use></svg>
+								</button>
+							</div>
+							<!-- Separate node end -->
 						</div>
 					</div>
 				</div>
-				{% endif %}
 				<!-- Separate servers links end -->
 				
 			</div>
