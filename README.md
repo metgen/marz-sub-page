@@ -1,17 +1,17 @@
 <h3 align="center">Marzbanner - Marzban subscription page template</h3>
 
 <p align="center">
-  Simple, beautiful, and user-friendly HTML template for <a href="https://github.com/Gozargah/Marzban">Marzban</a> and <a href="https://github.com/marzneshin/marzneshin">Marzneshin</a> subscription page based on <a href="https://getbootstrap.com/docs/5.3/">Bootstrap 5 CSS framework</a>
+  Simple, beautiful, and user-friendly HTML template for <a href="https://github.com/Gozargah/Marzban">Marzban</a> subscription page based on <a href="https://getbootstrap.com/docs/5.3/">Bootstrap 5 CSS framework</a>
   <br>
   <br>
   <a href="https://streletskiy.github.io/marzban-sub-page/"><strong>Live demo »</strong></a>
   <br>
   <br>
-  <a href="https://github.com/streletskiy/marzban-sub-page/tree/main#features">Features</a>
+  <a href="https://github.com/metgen/marz-sub-page/tree/main#features">Features</a>
   ·
-  <a href="https://github.com/streletskiy/marzban-sub-page/tree/main#installation">Installation</a>
+  <a href="https://github.com/metgen/marz-sub-page/tree/main#installation">Installation</a>
   ·
-  <a href="https://github.com/streletskiy/marzban-sub-page/tree/main#personalization">Personalization</a>
+  <a href="https://github.com/metgen/marz-sub-page/tree/main#personalization">Personalization</a>
 </p>
 
 <p>
@@ -35,9 +35,9 @@
 - Detailed guides are provided for Windows, Android, iOS, MacOS and Linux apps:
 
 	- **iOS / macOS:** Hiddify, Streisand, FoxRay, V2Box, Shadowrocket, SingBox, Happ
-	- **Android:** Hiddify, V2RayNG, Clash Meta, SingBox, Happ
+	- **Android:** Hiddify, V2RayNG, V2RayTun, Clash Meta, SingBox, Happ
 	- **Windows:** Hiddify, NekoRay, v2rayN, InvisibleMan, Clash Verge Rev
-	- **Linux:** v2rayA
+	- **Linux:** Clash Verge Rev, v2rayA
 
 # Installation
 
@@ -47,7 +47,7 @@ Use the instruction below to install page to <a href="https://github.com/Gozarga
 
 1. Upload the file to the server.
 ```
-sudo wget -N -P /var/lib/marzban/templates/subscription/ https://raw.githubusercontent.com/streletskiy/marzban-sub-page/main/index.html
+sudo wget -N -P /var/lib/marzban/templates/subscription/ https://raw.githubusercontent.com/metgen/marz-sub-page/main/index.html
 ```
 2. Enter these commands to automatically specify the file path to the subscription page.
 ```
@@ -67,37 +67,7 @@ marzban restart
 Re-upload the page file to the server (re-do first step from install):
 
 ```
-sudo wget -N -P /var/lib/marzban/templates/subscription/ https://raw.githubusercontent.com/streletskiy/marzban-sub-page/main/index.html
-```
-After update need to repeat personalization.
-
-<h2>Marzneshin:</h2>
-Use the instruction below to install page to <a href="https://github.com/marzneshin/marzneshin">Marzneshin</a>
-<h3>Install:</h3>
-
-1. Upload the file to the server.
-```
-sudo wget -N -P /var/lib/marzneshin/templates/subscription/ https://raw.githubusercontent.com/streletskiy/marzban-sub-page/main/marzneshin/index.html
-```
-2. Enter these commands to automatically specify the file path to the subscription page.
-```
-echo 'CUSTOM_TEMPLATES_DIRECTORY="/var/lib/marzneshin/templates/"' | sudo tee -a /etc/opt/marzneshin/.env
-echo 'SUBSCRIPTION_PAGE_TEMPLATE="subscription/index.html"' | sudo tee -a /etc/opt/marzneshin/.env
-```
-Or specify them manually by editing the Marzneshin `.env` file.
-```
-CUSTOM_TEMPLATES_DIRECTORY="/var/lib/marzneshin/templates/"
-SUBSCRIPTION_PAGE_TEMPLATE="subscription/index.html"
-```
-3. Restart Marzneshin to apply the changes.
-```
-marzneshin restart
-```
-<h3>Update:</h3>
-Re-upload the page file to the server (re-do first step from install):
-
-```
-sudo wget -N -P /var/lib/marzneshin/templates/subscription/ https://raw.githubusercontent.com/streletskiy/marzban-sub-page/main/marzneshin/index.html
+sudo wget -N -P /var/lib/marzban/templates/subscription/ https://raw.githubusercontent.com/metgen/marz-sub-page/main/index.html
 ```
 After update need to repeat personalization.
 
@@ -107,9 +77,9 @@ To customize the favicons, logo, support and donate links, you need to edit the 
 
 Favicons:
 ```
-https://raw.githubusercontent.com/streletskiy/marzban-sub-page/refs/heads/main/img/apple-touch-icon.png
-https://raw.githubusercontent.com/streletskiy/marzban-sub-page/refs/heads/main/img/favicon-16x16.png
-https://raw.githubusercontent.com/streletskiy/marzban-sub-page/refs/heads/main/img/favicon-32x32.png
+https://raw.githubusercontent.com/metgen/marz-sub-page/refs/heads/main/img/apple-touch-icon.png
+https://raw.githubusercontent.com/metgen/marz-sub-page/refs/heads/main/img/favicon-16x16.png
+https://raw.githubusercontent.com/metgen/marz-sub-page/refs/heads/main/img/favicon-32x32.png
 ```
 Support link:
 ```
@@ -121,7 +91,7 @@ https://github.com/Gozargah/Marzban#donation
 ```
 Logo:
 ```
-https://raw.githubusercontent.com/streletskiy/marzban-sub-page/refs/heads/main/img/logo.png
+https://raw.githubusercontent.com/metgen/marz-sub-page/refs/heads/main/img/logo.png
 ```
 
 ## Hide Username
@@ -152,7 +122,7 @@ After making changes, save the file and restart Marzban / Marzneshin.
 ***
 <h3 align="center">Contributors:</h3>
 <p align="center">
-<a href="https://github.com/streletskiy/marzban-sub-page/graphs/contributors">
+<a href="https://github.com/metgen/marz-sub-page/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=streletskiy/marzban-sub-page" />
 </a>
 </p>
